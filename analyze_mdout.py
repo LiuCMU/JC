@@ -1,3 +1,7 @@
+'''
+This is the file to extrat total energy from mdout files. 
+'''
+
 import os
 import argparse
 import glob

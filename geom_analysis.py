@@ -1,3 +1,10 @@
+'''
+This module functions associated with analyzing the geometry of a molecule.
+
+It can be run as as script with an xyz file
+'''
+
+
 import numpy
 import os
 import argparse #enable command line data path

@@ -31,6 +31,8 @@ def calculate_distance(atom1_coord, atom2_coord):
     return atom_distance
     
 def bond_check(distance, minimum=0, maximum=1.5):
+    if distance < 0:
+        raise ValueError(f'Invalid atom distance {distance}. Distance cannot be less than 0!')
     if distance >minimum and distance<=maximum:
         return True
     else:

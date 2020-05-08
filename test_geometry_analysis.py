@@ -3,15 +3,16 @@ Tests for geometry analyis functions
 '''
 
 import geom_analysis as ga
+import pytest
 
-def test_calculate_distance():
+def test_calculate_distance(): #make sure the test function start with test_
     coord1 = [0,  0, 0]
     coord2 = [1, 0, 0]
     
     expected = 1.0 
     oberved = ga.calculate_distance(coord1, coord2)
     
-    assert oberved == expected
+    assert oberved == expected #if this statement is not true, then it will not pass the test
     
 def test_bond_check():
     distance = 1
@@ -21,18 +22,25 @@ def test_bond_check():
     expected = True
     oberved = ga.bond_check(distance, minimum, maximum)
     assert oberved == expected
-    
+
+#checking the edge cases for a variable
 def test_bond_check_0():
-    bond_distance = 0
+    distance = 0
+    
     expected = False
-    observed = ga.bond_check(bond_distance)
+    oberved = ga.bond_check(distance)
+    assert oberved == expected
     
-    assert expected == observed
+def test_bond_check_1_5():
+    distance = 1.5
     
+    expected = True
+    oberved = ga.bond_check(distance)
+    assert oberved == expected
     
-def test_bond_check_1p6():
-    bond_distance = 1.6
+# check negative bond distances when the code will raise an error
+def test_bond_check_negative():
+    distance = -1
     expected = False
-    observed = ga.bond_check(bond_distance)
-    
-    assert expected == observed
+    with pytest.raises(ValueError):
+        oberved = ga.bond_check(distance)
